@@ -15,7 +15,11 @@ public class StringCalculator {
             return new String[]{};
         }
 
-        return numbers.split(",");
+        String numbersSeparator = ",";
+
+        numbers = numbers.replace("\n", numbersSeparator);
+
+        return numbers.split(numbersSeparator);
     }
 
     private int sumStringNumbers(String[] numbersSplitOnComma) {

@@ -27,11 +27,14 @@ public class CalculatingStringsTest {
         }
 
         @Test
-        public void weCanSumAnUnknownAmountOfNjumbers() {
+        public void weCanSumAnUnknownAmountOfNumbers() {
             assertEquals(19, stringCalculator.add("1, 10, 5, 3"));
         }
 
-
+        @Test
+        public void weCanSumNumbersSeparatedByNewLines() {
+            assertEquals(6, stringCalculator.add("1\n2,3"));
+        }
 
     }
 }
