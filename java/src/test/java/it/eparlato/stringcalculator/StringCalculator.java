@@ -24,7 +24,7 @@ public class StringCalculator {
         for (String numberAsString : numbersSplitOnComma) {
             result +=  Integer.parseInt(numberAsString.trim());
         }
-        
+
         return result;
     }
 }

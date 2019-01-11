@@ -26,6 +26,11 @@ public class CalculatingStringsTest {
             assertEquals(5, stringCalculator.add("2, 3"));
         }
 
+        @Test
+        public void weCanSumAnUnknownAmountOfNjumbers() {
+            assertEquals(19, stringCalculator.add("1, 10, 5, 3"));
+        }
+
 
 
     }
