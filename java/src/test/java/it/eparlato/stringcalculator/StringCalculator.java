@@ -3,9 +3,9 @@ package it.eparlato.stringcalculator;
 public class StringCalculator {
     public int add(String numbers) {
 
-        String[] numbersSplitOnComma = getNumbersFromString(numbers);
+        String[] numbersAsStringArray = getNumbersFromString(numbers);
 
-        int result = sumStringNumbers(numbersSplitOnComma);
+        int result = sumStringNumbers(numbersAsStringArray);
 
         return result;
     }
@@ -24,6 +24,7 @@ public class StringCalculator {
         for (String numberAsString : numbersSplitOnComma) {
             result +=  Integer.parseInt(numberAsString.trim());
         }
+        
         return result;
     }
 }
