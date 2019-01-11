@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(Enclosed.class)
 public class CalculatingStringsTest {
-    public static class WhenWeAddNumbersAsString {
+    public static class WhenAStringContainsNumbers {
 
         private StringCalculator stringCalculator = new StringCalculator();
 
@@ -18,10 +18,15 @@ public class CalculatingStringsTest {
 
         @Test
         public void sumIsTheArgumentIfTheArgumentIsANumber() {
-
             assertEquals(2, stringCalculator.add("2"));
         }
 
-    }
+        @Test
+        public void weCanSumTwoNumbers() {
+            assertEquals(5, stringCalculator.add("2, 3"));
+        }
 
+
+
+    }
 }

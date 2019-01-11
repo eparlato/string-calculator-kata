@@ -2,10 +2,28 @@ package it.eparlato.stringcalculator;
 
 public class StringCalculator {
     public int add(String numbers) {
-        if(numbers.isEmpty()) {
-            return 0;
+
+        String[] numbersSplitOnComma = getNumbersFromString(numbers);
+
+        int result = sumStringNumbers(numbersSplitOnComma);
+
+        return result;
+    }
+
+    private String[] getNumbersFromString(String numbers) {
+        if (numbers.isEmpty()) {
+            return new String[]{};
         }
 
-        return Integer.parseInt(numbers);
+        return numbers.split(",");
+    }
+
+    private int sumStringNumbers(String[] numbersSplitOnComma) {
+        int result = 0;
+
+        for (String numberAsString : numbersSplitOnComma) {
+            result +=  Integer.parseInt(numberAsString.trim());
+        }
+        return result;
     }
 }
