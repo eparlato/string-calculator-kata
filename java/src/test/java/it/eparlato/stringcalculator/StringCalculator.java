@@ -20,6 +20,14 @@ public class StringCalculator {
 
         String numberSeparator = ",";
 
+        if(input.startsWith("//")) {
+            numberSeparator = input.substring(2, 3);
+            int indexOfLineSeparator = input.indexOf("\n");
+
+            input = input.substring(indexOfLineSeparator + 1);
+        }
+
+
         input = clearInput(input, numberSeparator);
 
         String[] numbersStringArray = extractNumbersAsStringArray(input, numberSeparator);
