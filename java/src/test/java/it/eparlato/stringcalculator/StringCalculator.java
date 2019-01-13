@@ -1,32 +1,41 @@
 package it.eparlato.stringcalculator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StringCalculator {
     public int add(String numbers) {
 
-        String[] numbersAsStringArray = getNumbersFromString(numbers);
+        List<Integer> numbersList = extractNumbersFromString(numbers);
 
-        int result = sumStringNumbers(numbersAsStringArray);
-
-        return result;
+        return sumNumbers(numbersList);
     }
 
-    private String[] getNumbersFromString(String numbers) {
-        if (numbers.isEmpty()) {
-            return new String[]{};
+    private List<Integer> extractNumbersFromString(String input) {
+        List<Integer> numbers = new ArrayList<Integer>();
+
+        if (input.isEmpty()) {
+            return numbers;
         }
 
-        String numbersSeparator = ",";
+        String numberSeparator = ",";
 
-        numbers = numbers.replace("\n", numbersSeparator);
+        input = input.replace("\n", numberSeparator);
 
-        return numbers.split(numbersSeparator);
+        String[] numbersSplitOnNumberSeparator = input.split(numberSeparator);
+
+        for (String numberAsString : numbersSplitOnNumberSeparator) {
+            numbers.add(Integer.parseInt(numberAsString.trim()));
+        }
+
+        return numbers;
     }
 
-    private int sumStringNumbers(String[] numbersSplitOnComma) {
+    private int sumNumbers(List<Integer> numbers) {
         int result = 0;
 
-        for (String numberAsString : numbersSplitOnComma) {
-            result +=  Integer.parseInt(numberAsString.trim());
+        for (int number : numbers) {
+            result += number;
         }
 
         return result;
