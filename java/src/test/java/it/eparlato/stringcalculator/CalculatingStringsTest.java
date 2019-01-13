@@ -53,6 +53,10 @@ public class CalculatingStringsTest {
             stringCalculator.add("1,4,-2,2,-3");
         }
 
+        @Test
+        public void weIgnoreNumbersBiggerThan1000() {
+            assertEquals(5, stringCalculator.add("2,1001,3"));
+        }
     }
 
 }

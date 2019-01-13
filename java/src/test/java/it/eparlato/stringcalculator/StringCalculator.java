@@ -1,6 +1,7 @@
 package it.eparlato.stringcalculator;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class StringCalculator {
@@ -52,6 +53,11 @@ public class StringCalculator {
         int result = 0;
 
         for (int number : numbers) {
+
+            if (number > 1000) {
+                continue;
+            }
+
             result += number;
         }
 
