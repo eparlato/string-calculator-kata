@@ -14,7 +14,17 @@ public class StringCalculator {
 
         List<Integer> numbersList = numbersExtractor.extractNumbers(numbers);
 
+        validateNumbers(numbersList);
+
         return sumNumbers(numbersList);
+    }
+
+    private void validateNumbers(List<Integer> numbersList) {
+        for (int number : numbersList) {
+            if (number < 0) {
+                throw new IllegalArgumentException("negatives not allowed: " + number);
+            }
+        }
     }
 
     private int sumNumbers(List<Integer> numbers) {
