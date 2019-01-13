@@ -1,5 +1,6 @@
 package it.eparlato.stringcalculator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StringCalculator {
@@ -14,17 +15,37 @@ public class StringCalculator {
 
         List<Integer> numbersList = numbersExtractor.extractNumbers(numbers);
 
-        validateNumbers(numbersList);
+        checkForNegativeNumbers(numbersList);
 
         return sumNumbers(numbersList);
     }
 
-    private void validateNumbers(List<Integer> numbersList) {
+    private void checkForNegativeNumbers(List<Integer> numbersList) {
+        List<Integer> negativeNumbers = new ArrayList<Integer>();
+
         for (int number : numbersList) {
             if (number < 0) {
-                throw new IllegalArgumentException("negatives not allowed: " + number);
+                negativeNumbers.add(number);
             }
         }
+
+        if (!negativeNumbers.isEmpty()) {
+            throw new IllegalArgumentException("negatives not allowed: " + formatNegativeNumbersForErrorMessage(negativeNumbers));
+        }
+    }
+
+    private String formatNegativeNumbersForErrorMessage(List<Integer> numbers) {
+        StringBuilder stringOfNumbers = new StringBuilder();
+
+        for (int index = 0; index < numbers.size(); index++) {
+            stringOfNumbers.append(numbers.get(index));
+
+            if(index != numbers.size() - 1) {
+                stringOfNumbers.append(", ");
+            }
+        }
+
+        return stringOfNumbers.toString();
     }
 
     private int sumNumbers(List<Integer> numbers) {

@@ -46,13 +46,12 @@ public class CalculatingStringsTest {
         }
 
         @Test
-        public void weShowAnErrorMessageIfThereIsANegativeNumber() {
+        public void weShowAnErrorMessageIfThereAreNegativeNumbers() {
             negativeNumberException.expect(IllegalArgumentException.class);
-            negativeNumberException.expectMessage("negatives not allowed: -1");
+            negativeNumberException.expectMessage("negatives not allowed: -2, -3");
 
-            stringCalculator.add("1,4,-1");
+            stringCalculator.add("1,4,-2,2,-3");
         }
-
 
     }
 
