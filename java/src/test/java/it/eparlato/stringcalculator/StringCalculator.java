@@ -18,26 +18,26 @@ public class StringCalculator {
             return numbers;
         }
 
-        String numberSeparator = ",";
-
-        if(input.startsWith("//")) {
-            numberSeparator = input.substring(2, 3);
-            int indexOfLineSeparator = input.indexOf("\n");
-
-            input = input.substring(indexOfLineSeparator + 1);
-        }
-
+        String numberSeparator = extractNumberSeparator(input);
 
         input = clearInput(input, numberSeparator);
 
         String[] numbersStringArray = extractNumbersAsStringArray(input, numberSeparator);
 
-        numbers = convertNumbersToIntegers(numbersStringArray);
+        numbers = convertToIntegerList(numbersStringArray);
 
         return numbers;
     }
 
-    private List<Integer> convertNumbersToIntegers(String[] numbersStringArray) {
+    private String extractNumberSeparator(String input) {
+        if (input.startsWith("//")) {
+            return input.substring(2, 3);
+        }
+
+        return ",";
+    }
+
+    private List<Integer> convertToIntegerList(String[] numbersStringArray) {
         List<Integer> numbers = new ArrayList<Integer>();
 
         for (String numberAsString : numbersStringArray) {
@@ -52,6 +52,12 @@ public class StringCalculator {
     }
 
     private String clearInput(String input, String numberSeparator) {
+        if (input.startsWith("//")) {
+            int indexOfLineSeparator = input.indexOf("\n");
+
+            input = input.substring(indexOfLineSeparator + 1);
+        }
+
         input = input.replace("\n", numberSeparator);
         input = input.replace(" ", "");
 
