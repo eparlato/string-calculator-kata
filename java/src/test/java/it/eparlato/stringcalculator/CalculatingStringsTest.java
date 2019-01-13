@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 public class CalculatingStringsTest {
     public static class WhenAStringContainsNumbers {
 
-        private StringCalculator stringCalculator = new StringCalculator();
+        private StringCalculator stringCalculator = new StringCalculator(new ConcreteNumbersExtractor());
 
         @Test
         public void sumIsZeroIfTheStringIsEmpty() {
