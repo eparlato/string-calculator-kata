@@ -20,15 +20,34 @@ public class StringCalculator {
 
         String numberSeparator = ",";
 
-        input = input.replace("\n", numberSeparator);
+        input = clearInput(input, numberSeparator);
 
-        String[] numbersSplitOnNumberSeparator = input.split(numberSeparator);
+        String[] numbersStringArray = extractNumbersAsStringArray(input, numberSeparator);
 
-        for (String numberAsString : numbersSplitOnNumberSeparator) {
-            numbers.add(Integer.parseInt(numberAsString.trim()));
+        numbers = convertNumbersToIntegers(numbersStringArray);
+
+        return numbers;
+    }
+
+    private List<Integer> convertNumbersToIntegers(String[] numbersStringArray) {
+        List<Integer> numbers = new ArrayList<Integer>();
+
+        for (String numberAsString : numbersStringArray) {
+            numbers.add(Integer.parseInt(numberAsString));
         }
 
         return numbers;
+    }
+
+    private String[] extractNumbersAsStringArray(String input, String numberSeparator) {
+        return input.split(numberSeparator);
+    }
+
+    private String clearInput(String input, String numberSeparator) {
+        input = input.replace("\n", numberSeparator);
+        input = input.replace(" ", "");
+
+        return input;
     }
 
     private int sumNumbers(List<Integer> numbers) {
